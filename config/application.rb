@@ -11,6 +11,13 @@ module HelloWorldBackend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'https://adoring-jackson-bd5db4.netlify.app/'
+        resource '*', headers: :any, methods: [:get, :post]
+      end
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
